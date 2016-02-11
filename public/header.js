@@ -5,7 +5,7 @@
 app.controller('MainCtrl', ['$scope', function($scope){
 	$scope.showLogin = false;
 	$scope.toggleLogin = function(){
-		$scope.showLogin = $scope.showLogin===true?false:true;
+		$scope.showLogin = !!($scope.showLogin)?false:true;
 	}
     $scope.login = function(){
 		
