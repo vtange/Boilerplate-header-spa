@@ -9,8 +9,18 @@
 							<div class="btn-toolbar">
 								<% if (!user) { %>
 								<div data-ng-click="toggleLogin()" class="btn btn-default"><span class="fa fa-user"></span> Local Login</div>
-								<div data-ng-if="showLogin">healeloa</div>
 								<a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+								<div style="position:absolute; background-color:#f8f8f8; border:1px solid #e7e7e7; padding:10px; border-radius:10px;" data-ng-if="showLogin">
+									<form data-ng-submit="login()">
+										<div class="form-group">
+											<input type="text" class="form-control" name="email" placeholder="Email" data-ng-model="info.email">
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" name="password" placeholder="Password" data-ng-model="info.pass">
+										</div>
+										<button class="btn btn-warning" type="submit">Login</button>
+									</form>
+								</div>
 								<% } else {%>
 								<a href="/profile" class="btn btn-default"><span class="fa fa-user"></span> <%= user.local.username %></a>
 								<% } %>
