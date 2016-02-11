@@ -15,20 +15,16 @@ module.exports = function(app, passport) {
     // =====================================
     // LOGIN ===============================
     // =====================================
-    // show the login form
-    app.get('/login', function(req, res) {
 
-        // render the page and pass in any flash data if it exists
-        res.render('acct-manage/login.ejs', { user : req.user, message: req.flash('loginMessage') }); 
-    });
-
-    // process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect : '/', // redirect to home page with logged in status
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
-
+    app.post('/login', passport.authenticate('local-login', {failureFlash : true}), function(req, res) {
+		if (req.user){
+			var userInfo = {username:req.user.local.username,email:req.user.local.email};
+			res.send(JSON.stringify(userInfo));
+		}
+		else{
+			res.send(304);
+		}
+	});
     // =====================================
     // SIGNUP ==============================
     // =====================================
