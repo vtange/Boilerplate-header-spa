@@ -7,14 +7,15 @@ module.exports = function(app, passport) {
     // LOGIN ===============================
     // =====================================
 
-    app.post('/login', passport.authenticate('local-login', {failureFlash : true}), function(user, message, res) {
-		console.log(message);
+	app.get('/loginfailure', function(req, res){
+		res.send(JSON.stringify({message: req.flash('loginMessage')}));
+	});
+	
+    app.post('/login', passport.authenticate('local-login', {failureRedirect: '/loginfailure', failureFlash : true}), function(req, res) {
+		var user = req.user;
 		if (user){
 			var userInfo = {username:user.local.username,email:user.local.email};
 			res.send(JSON.stringify(userInfo));
-		}
-		else{
-			console.log(arguments)
 		}
 	});
     // =====================================
