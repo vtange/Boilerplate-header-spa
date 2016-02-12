@@ -11,6 +11,13 @@ app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http
     $scope.login = function(){
 		$http.post($window.location.href+"login",$scope.info).success(function(data){
 			console.log(data);
+			//check if data has a user or not
+			if(data.id){
+				$scope.user = data;
+			}
+			else{
+				$scope.message = data.message[0];
+			}
 			
 		}).error(function(err){
 			throw err;
