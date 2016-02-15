@@ -1,7 +1,8 @@
     <div class="navbar navbar-default">
 		<div class="container-fluid">
-			<script src="header.js"></script>
-				  <div id="header" style="display:flex; align-items:center; justify-content:space-around;" data-ng-app="header" data-ng-controller="MainCtrl">
+			<script src="acct-manage/userService.js"></script>
+			<script src="acct-manage/header.js"></script>
+				  <div id="header" style="display:flex; align-items:center; justify-content:space-around;" data-ng-controller="LoginCtrl">
 					    <div id="group1">
         					<a href="/"><h1>Title</h1></a>
 					  	</div>
@@ -11,7 +12,7 @@
 								<div id="login-buttons" data-ng-if="!(user)">
 									<div data-ng-click="toggleLogin()" class="btn btn-default"><span class="fa fa-user"></span> Local Login</div>
 									<a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-									<div style="position:absolute; background-color:#f8f8f8; border:1px solid #e7e7e7; padding:10px; border-radius:10px;" data-ng-if="showLogin">
+									<div style="position:absolute; background-color:#f8f8f8; border:1px solid #e7e7e7; padding:10px; border-radius:10px;z-index:5" data-ng-if="showLogin">
 										<form data-ng-submit="login()">
 											<p style="background-color:salmon;color:white;padding-left:5px;border-radius:3px;"data-ng-if="message">{{message}}</p>
 											<div class="form-group">
@@ -26,7 +27,7 @@
 								</div>
 								<a href="/profile" class="btn btn-default" data-ng-if="user"><span class="fa fa-user"></span> {{user.username}}</a>
 								<% } else {%>
-								<a href="/profile" class="btn btn-default"><span class="fa fa-user"></span> <%= user.local.username %></a>
+								<a href="/profile" class="btn btn-default"><span class="fa fa-user" data-ng-init="package = <%= packagedUser %>;autologUser(package)"></span> <%= user.local.username %></a>
 								<% } %>
 							</div>
 					    </div>

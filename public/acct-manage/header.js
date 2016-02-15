@@ -1,8 +1,9 @@
 (function() {
     //start of function
-  var app = angular.module('header', []);
+  var app = angular.module('header', ['userService']);
 
-app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
+app.controller('LoginCtrl', ['$scope', '$http', '$window', 'memory', function($scope, $http, $window, memory){
+	$scope.service1 = memory;
 	$scope.info = {};
 	$scope.showLogin = false;
 	$scope.toggleLogin = function(){
@@ -10,9 +11,9 @@ app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http
 	}
     $scope.login = function(){
 		$http.post($window.location.href+"login",$scope.info).success(function(data){
-			console.log(data);
 			//check if data has a user or not
 			if(data.id){
+				$scope.service1.user = data;
 				$scope.user = data;
 			}
 			else{
@@ -25,8 +26,10 @@ app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http
 		
 		
 	}
-	$scope.logout = function(){
-		
+	$scope.autologUser = function(user){
+		var info = {id:user._id, username: user.local.username, email: user.local.email};
+		$scope.service1.user = info;
+		$scope.user = info;
 	}
 }]);//end of controller
   //end of function
