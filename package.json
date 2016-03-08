@@ -1,6 +1,6 @@
 {
   "name": "basic-login-bar-spa",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Basic Bar with Title and Login buttons, Social Media Login incl. - No-Refresh Login Widget",
   "main": "server.js",
   "scripts": {
