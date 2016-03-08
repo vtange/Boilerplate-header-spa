@@ -12,5 +12,5 @@
     "connect-flash": "~0.1.1",
     "express": "~4.0.0",
     "nodemailer": "^2.0.0"
-  },
+  }
 }
