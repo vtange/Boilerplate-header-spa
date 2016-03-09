@@ -1,4 +1,4 @@
-console.log("	APP/ACCT-MANAGE/SOCIALMEDIA.JS")
+console.log("	APP/ACCT-MANAGE/SOCIALMEDIA.JS");
 
 // app/socialMedia.js
 module.exports = function(app, passport) {
@@ -50,10 +50,9 @@ module.exports = function(app, passport) {
 //use passport.authorize to connect social accounts with current user
     // locally --------------------------------
         app.get('/connect/local', function(req, res) {
-            res.render('acct-manage/connect-local.ejs', { user : req.user, message: req.flash('loginMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
+            res.render(require('path').join(__dirname, "../../views")+'/acct-manage/connect-local.ejs', { user : req.user, message: req.flash('loginMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
         	});
 		});
-	
         app.post('/connect/local', passport.authenticate('local-signup', {
             successRedirect : '/profile', // redirect to the secure profile section
             failureRedirect : '/connect/local', // redirect back to the signup page if there is an error

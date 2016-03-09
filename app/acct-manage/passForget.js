@@ -1,6 +1,8 @@
-console.log("	APP/ACCT-MANAGE/PASSFORGET.JS")
+console.log("	APP/ACCT-MANAGE/PASSFORGET.JS");
 
-var User            = require('../models/user');
+var appRoot 		= require('app-root-path');
+var User       		= require(appRoot +'/app/models/user');
+var path			= require('path');
 var flash    		= require('connect-flash');
 var asyncc 			= require('async');
 var crypto 			= require('crypto');
@@ -17,7 +19,7 @@ module.exports = function(app) {
     app.get('/forgot', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render('acct-manage/forgot.ejs', { user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know }); 
+        res.render(path.join(__dirname, "../../views")+'/acct-manage/forgot.ejs', { user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know }); 
     	});
 	});
 	
@@ -80,7 +82,7 @@ module.exports = function(app) {
 		  req.flash('error', 'Password reset token is invalid or has expired.');
 		  return res.redirect('/forgot');
 		}
-		res.render('acct-manage/reset.ejs', {
+		res.render(path.join(__dirname, "../../views")+'/acct-manage/reset.ejs', {
 		  token: req.params.token,
 		  message: req.flash('info'),
 		  user: req.user,
