@@ -24,14 +24,14 @@ module.exports = function(app, passport) {
     // SIGNUP ==============================
     // =====================================
     // show the signup form
-    app.get('/signup', function(req, res) {
+    app.get('/signup', loginRedundancy, function(req, res) {
 
         // render the page and pass in any flash data if it exists
         res.render(path.join(__dirname, "../../views")+'acct-manage/signup.ejs', { user : req.user, message: req.flash('signupMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
     	});
 	});
     // process the signup form
-    app.post('/signup', passport.authenticate('local-signup', {
+    app.post('/signup', loginRedundancy, passport.authenticate('local-signup', {
         successRedirect : '/', // redirect to home page with logged in status
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
@@ -59,7 +59,13 @@ module.exports = function(app, passport) {
     });
 
 };
-
+// prevent logged in folks from signing up/logging in again
+function loginRedundancy(req, res, next) {
+    if (req.isAuthenticated())
+       res.redirect('/');
+	else
+		return next();
+}
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
