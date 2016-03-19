@@ -31,5 +31,15 @@ require('basic-login-bar')(app,session,passport);
 	...
 <%- include ../node_modules/basic-login-bar/views/partials/header.ejs %>
  ```
+  
+ The .ejs partial for the header requires a 'title' property inputed from your server route. This autogenerates the title shown on the header. For example:
+ 
+ ```
+ 		res.render('index.ejs', {
+			title : app.title,
+ ```
+ You can define ```app.title``` in ```server.js/index.js``` or in ```package.json``` and require it.
+ 
+ 
  You can find example boilerplate code (most importantly the /public files needed for the page to function) for a project using this module at 
  https://github.com/vtange/Boilerplates/tree/master/site-w-logins-header-spa
