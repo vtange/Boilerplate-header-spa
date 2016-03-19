@@ -1,4 +1,4 @@
-# Boilerplate-header-spa
+# basic-login-bar-spa
 
 No Refresh version of an EJS header template with login, signup, social media and forgot email functions
 
