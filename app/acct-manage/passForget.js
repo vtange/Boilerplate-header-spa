@@ -19,7 +19,7 @@ module.exports = function(app) {
     app.get('/forgot', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render(path.join(__dirname, "../../views")+'/acct-manage/forgot.ejs', { user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know }); 
+        res.render(path.join(__dirname, "../../views")+'/acct-manage/forgot.ejs', { title: app.title, user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know }); 
     	});
 	});
 	
@@ -83,6 +83,7 @@ module.exports = function(app) {
 		  return res.redirect('/forgot');
 		}
 		res.render(path.join(__dirname, "../../views")+'/acct-manage/reset.ejs', {
+		  title: app.title,
 		  token: req.params.token,
 		  message: req.flash('info'),
 		  user: req.user,

@@ -27,7 +27,7 @@ module.exports = function(app, passport) {
     app.get('/signup', loginRedundancy, function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render(path.join(__dirname, "../../views")+'/acct-manage/signup.ejs', { user : req.user, message: req.flash('signupMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
+        res.render(path.join(__dirname, "../../views")+'/acct-manage/signup.ejs', { title: app.title, user : req.user, message: req.flash('signupMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
     	});
 	});
     // process the signup form
@@ -45,6 +45,7 @@ module.exports = function(app, passport) {
     // we will use route middleware to verify this (the isLoggedIn function)
     app.get('/profile', isLoggedIn, function(req, res) {
         res.render(path.join(__dirname, "../../views")+'/acct-manage/profile.ejs', {
+			title: app.title,
             user : req.user, // get the user out of session and pass to template
 			packagedUser : JSON.stringify(req.user) // for angular to know
         });
