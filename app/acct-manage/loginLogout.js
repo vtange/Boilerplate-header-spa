@@ -1,5 +1,3 @@
-console.log("	APP/ACCT-MANAGE/LOGINLOGOUT.JS");
-
 var path = require('path');
 
 // app/acct-manage/loginLogout.js
@@ -27,7 +25,7 @@ module.exports = function(app, passport) {
     app.get('/signup', loginRedundancy, function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render(path.join(__dirname, "../../views")+'/acct-manage/signup.ejs', { title: app.title, user : req.user, message: req.flash('signupMessage'), packagedUser : JSON.stringify(req.user) // for angular to know });
+        res.render(path.join(__dirname, "../../views")+'/acct-manage/signup.ejs', { title: app.title, user : req.user, message: req.flash('signupMessage'), packagedUser : JSON.stringify(req.user) // for angular to know
     	});
 	});
     // process the signup form

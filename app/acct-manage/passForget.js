@@ -1,5 +1,3 @@
-console.log("	APP/ACCT-MANAGE/PASSFORGET.JS");
-
 var appRoot 		= require('app-root-path');
 var User       		= require(appRoot +'/app/models/user');
 var path			= require('path');
@@ -19,7 +17,7 @@ module.exports = function(app) {
     app.get('/forgot', function(req, res) {
 
         // render the page and pass in any flash data if it exists
-        res.render(path.join(__dirname, "../../views")+'/acct-manage/forgot.ejs', { title: app.title, user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know }); 
+        res.render(path.join(__dirname, "../../views")+'/acct-manage/forgot.ejs', { title: app.title, user : req.user, message: req.flash('info'), packagedUser : JSON.stringify(req.user) // for angular to know
     	});
 	});
 	
