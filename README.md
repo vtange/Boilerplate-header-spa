@@ -10,7 +10,7 @@ This module extends your Express app with routes and templates needed to quickly
  How to use:
  
  ```
- npm install --save basic-login-bar
+ npm install --save basic-login-bar-spa
  ```
  In your server.js or app.js:
  ```
