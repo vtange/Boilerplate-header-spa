@@ -36,7 +36,7 @@ module.exports = function(app) {
 		  User.findOne({ 'local.email' : req.body.email }, function(err, user) {
 			if (!user) {
 			  req.flash('info', 'No account with that email address exists.');
-			  return res.redirect('/forgot');
+			  return res.redirect('/users/forgot');
 			}
 
 			user.local.resetPasswordToken = token;
@@ -78,7 +78,7 @@ module.exports = function(app) {
 	  User.findOne({ 'local.resetPasswordToken': req.params.token, 'local.resetPasswordExpires': { $gt: Date.now() } }, function(err, user) {
 		if (!user) {
 		  req.flash('error', 'Password reset token is invalid or has expired.');
-		  return res.redirect('/forgot');
+		  return res.redirect('/users/forgot');
 		}
 		res.render(path.join(__dirname, "../../views")+'/acct-manage/reset.ejs', {
 		  title: app.title,
