@@ -104,7 +104,7 @@ module.exports = function(app, passport) {
 // user account will stay active in case they want to reconnect in the future
 
     // local -----------------------------------
-    app.get('/users/unlink/local', function(req, res) {
+    app.get('/unlink/local', function(req, res) {
         var user            = req.user;
         user.local.email    = undefined;
         user.local.password = undefined;
@@ -114,25 +114,25 @@ module.exports = function(app, passport) {
     });
 
     // facebook -------------------------------
-    app.get('/users/unlink/facebook', function(req, res) {
+    app.get('/unlink/facebook', function(req, res) {
         var user            = req.user;
         user.facebook.token = undefined;
         user.save(function(err) {
-            res.redirect('/profile');
+            res.redirect('/users/profile');
         });
     });
 
     // twitter --------------------------------
-    app.get('/users/unlink/twitter', function(req, res) {
+    app.get('/unlink/twitter', function(req, res) {
         var user           = req.user;
         user.twitter.token = undefined;
         user.save(function(err) {
-           res.redirect('/profile');
+           res.redirect('/users/profile');
         });
     });
 
     // google ---------------------------------
-    app.get('/users/unlink/google', function(req, res) {
+    app.get('/unlink/google', function(req, res) {
         var user          = req.user;
         user.google.token = undefined;
         user.save(function(err) {
