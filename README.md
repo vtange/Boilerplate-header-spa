@@ -41,6 +41,4 @@ require('ejs-header-fastlog')(app,session,passport);
  ```
  You can define ```app.title``` in ```server.js/index.js``` or in ```package.json``` and require it.
  
- 
- You can find example boilerplate code (most importantly the /public files needed for the page to function) for a project using this module at 
- https://github.com/vtange/Boilerplates/tree/master/ejs-fastlog
+ ### You can generate a project using Slush using this header with https://github.com/vtange/slush-ejs-fastlog
