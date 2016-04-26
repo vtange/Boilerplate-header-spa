@@ -1,4 +1,4 @@
-# basic-login-bar-spa
+# ejs-header-fastlog
 
 No Refresh version of an EJS header template with login, signup, social media and forgot email functions
 

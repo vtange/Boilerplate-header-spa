@@ -1,7 +1,7 @@
 {
-  "name": "basic-login-bar-spa",
-  "version": "1.1.5",
-  "description": "Basic Bar with Title and Login buttons, Social Media Login incl. - No-Refresh Login Widget",
+  "name": "ejs-header-fastlog",
+  "version": "1.1.6",
+  "description": "ejs barebones header with social-media-login & no-refresh login widget",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
