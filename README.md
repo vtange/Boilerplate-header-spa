@@ -10,7 +10,7 @@ This module extends your Express app with routes and templates needed to quickly
  How to use:
  
  ```
- npm install --save basic-login-bar-spa
+ npm install --save ejs-header-fastlog
  ```
  In your server.js or app.js:
  ```
@@ -23,14 +23,14 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use('/users', express.static(__dirname + '/public'));
 
-require('basic-login-bar')(app,session,passport);
+require('ejs-header-fastlog')(app,session,passport);
  ```
  In your own templates
  ```
  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script> <!-- load angular -->
 	<script src="app.js"></script>
 	...
-<%- include ../node_modules/basic-login-bar/views/partials/header.ejs %>
+<%- include ../node_modules/ejs-header-fastlog/views/partials/header.ejs %>
  ```
   
  The .ejs partial for the header requires a 'title' property inputed from all your server routes. This autogenerates the title shown on the header. For example:
@@ -43,4 +43,4 @@ require('basic-login-bar')(app,session,passport);
  
  
  You can find example boilerplate code (most importantly the /public files needed for the page to function) for a project using this module at 
- https://github.com/vtange/Boilerplates/tree/master/site-w-logins-header-spa
+ https://github.com/vtange/Boilerplates/tree/master/ejs-fastlog
